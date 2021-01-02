@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.demo.assignment.data.model.list.ReposListingItem" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{clickListener}"
+        app:cardCornerRadius="@dimen/margin_medium"
+        android:layout_marginLeft="@dimen/margin_1_5x"
+        android:layout_marginTop="@dimen/margin_1x"
+        android:layout_marginRight="@dimen/margin_1_5x"
+        android:layout_marginBottom="@dimen/margin_1x"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        >
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="@dimen/avatar_size"
+                android:layout_height="@dimen/avatar_height"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/placeholder"
+                app:avatar="@{item.owner.avatarUrl}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearance="@style/circular"
+                android:paddingEnd="@dimen/margin_1x"
+                android:background="@color/white"
+                />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_font_family"
+                android:text="@{item.name}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_medium"
+                android:textStyle="normal"
+                app:layout_constraintStart_toEndOf="@+id/iv_avatar"
+                tools:text="Name"
+                />
+
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="@{@string/description(item.description)}"
+                android:textSize="@dimen/font_small"
+                app:layout_constraintStart_toEndOf="@+id/iv_avatar"
+                app:layout_constraintTop_toBottomOf="@+id/tvName"
+                tools:text="Description" />
+
+            <TextView
+                android:id="@+id/tvIssueCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:ellipsize="end"
+                android:fontFamily="@font/roboto_font_family"
+                android:text="@{@string/open_issue(item.openIssuesCount)}"
+                android:textSize="@dimen/font_small"
+                android:textStyle="normal"
+                app:layout_constraintStart_toEndOf="@+id/iv_avatar"
+                app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+                tools:text="Issue count" />
+
+            <TextView
+                android:id="@+id/tvLicense"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:maxLines="1"
+                android:text="@{@string/license(item.license.name)}"
+                android:textStyle="normal"
+                app:layout_constraintStart_toEndOf="@+id/iv_avatar"
+                app:layout_constraintTop_toBottomOf="@+id/tvIssueCount"
+                tools:text="License" />
+
+            <TextView
+                android:id="@+id/tvPermission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="@{@string/permissions(item.permissions.admin, item.permissions.push, item.permissions.pull)}"
+                android:textStyle="normal"
+                app:layout_constraintStart_toEndOf="@+id/iv_avatar"
+                app:layout_constraintTop_toBottomOf="@+id/tvLicense"
+                tools:text="Permissions" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

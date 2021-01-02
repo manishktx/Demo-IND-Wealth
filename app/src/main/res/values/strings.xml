@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Demo - INDwealth</string>
+    <string name="headline">Repos</string>
+
+    <string name="description">Description: %s</string>
+    <string name="open_issue">Open Issue: %s</string>
+    <string name="license"><b>License:</b> %s</string>
+    <string name="permissions">Permissions\nAdmin : %1s Push : %2s\nPull : %3s</string>
+
+</resources>
